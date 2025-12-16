@@ -24,7 +24,7 @@ export function useSnapScroll({
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isSnappingRef = useRef(false);
 
-  const findClosestSection = useCallback(() => {
+  const findClosestSection = useCallback((): { closestSection: Element | null; shouldSnap: boolean } => {
     const sections = document.querySelectorAll(sectionSelector);
     const scrollY = window.scrollY;
 

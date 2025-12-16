@@ -18,7 +18,12 @@
       "Bash(powershell -Command \"Get-ChildItem ''d:\\Programming\\Portfolios\\port12-portfolio\\_material\\medlemskab'' | Select-Object Name\")",
       "Bash(powershell -Command \"ls ''d:\\Programming\\Portfolios\\port12-portfolio\\_material\\medlemskab''\")",
       "Bash(powershell -Command \"Get-ChildItem ''d:\\Programming\\Portfolios\\port12-portfolio\\_material'' -Recurse | Select-Object FullName\")",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Complete Port12 portfolio website\n\n- Hero section with video showreel\n- Members showcase with individual video reels\n- Membership plans (Flex and All-In)\n- About section with company info\n- Smooth scroll navigation\n- Responsive design with Tailwind CSS\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(gh:*)",
+      "Bash(npx vercel:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ]
   }
 }
