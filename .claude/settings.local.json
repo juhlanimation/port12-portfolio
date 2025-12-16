@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(for:*)",
+      "Bash(do ffmpeg -i \"$f\" -quality 85 \"$f%.jpg.webp\" -y)",
+      "Bash(done)",
+      "Bash(ffprobe:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(identify -format:*)",
+      "Bash(npm ls:*)",
+      "Bash(dir /s /b \"d:\\Programming\\Portfolios\\port12-portfolio\\_material\")",
+      "Bash(dir:*)",
+      "Bash(powershell -Command \"Get-ChildItem ''d:\\Programming\\Portfolios\\port12-portfolio\\_material\\medlemskab'' | Select-Object Name\")",
+      "Bash(powershell -Command \"ls ''d:\\Programming\\Portfolios\\port12-portfolio\\_material\\medlemskab''\")",
+      "Bash(powershell -Command \"Get-ChildItem ''d:\\Programming\\Portfolios\\port12-portfolio\\_material'' -Recurse | Select-Object FullName\")",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #d8d8d5;
+  --foreground: #27272A;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-plus-jakarta);
+  --font-title: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Font utilities */
+.font-title {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+}
+
+/* Section styling */
+.section {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.section-footer {
+  height: 10vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Scrollbar styling */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--foreground) var(--background);
+}
+
+/* Custom scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--foreground);
+  border-radius: 0;
+}
+
+/* Dotted line utility (9px dash, 6px gap) */
+.dotted-line {
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    white 0,
+    white 9px,
+    transparent 9px,
+    transparent 15px
+  );
+  mix-blend-mode: difference;
+}
+
+/* Nav link with animated dotted underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    currentColor 0,
+    currentColor 9px,
+    transparent 9px,
+    transparent 15px
+  );
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Dotted box for membership checkboxes */
+.dotted-box {
+  border: none;
+  background-image:
+    repeating-linear-gradient(to right, var(--foreground) 0, var(--foreground) 4px, transparent 4px, transparent 8px),
+    repeating-linear-gradient(to right, var(--foreground) 0, var(--foreground) 4px, transparent 4px, transparent 8px),
+    repeating-linear-gradient(to bottom, var(--foreground) 0, var(--foreground) 4px, transparent 4px, transparent 8px),
+    repeating-linear-gradient(to bottom, var(--foreground) 0, var(--foreground) 4px, transparent 4px, transparent 8px);
+  background-size: 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-position: 0 0, 0 100%, 0 0, 100% 0;
+  background-repeat: no-repeat;
+}
+
+/* Corner border effect - brackets in corners only */
+.corner-border {
+  --corner-size: 12px;
+  --corner-thickness: 2px;
+  --corner-color: var(--foreground);
+  position: relative;
+  background:
+    /* Top-left corner */
+    linear-gradient(var(--corner-color), var(--corner-color)) 0 0,
+    linear-gradient(var(--corner-color), var(--corner-color)) 0 0,
+    /* Top-right corner */
+    linear-gradient(var(--corner-color), var(--corner-color)) 100% 0,
+    linear-gradient(var(--corner-color), var(--corner-color)) 100% 0,
+    /* Bottom-left corner */
+    linear-gradient(var(--corner-color), var(--corner-color)) 0 100%,
+    linear-gradient(var(--corner-color), var(--corner-color)) 0 100%,
+    /* Bottom-right corner */
+    linear-gradient(var(--corner-color), var(--corner-color)) 100% 100%,
+    linear-gradient(var(--corner-color), var(--corner-color)) 100% 100%;
+  background-size:
+    var(--corner-thickness) var(--corner-size),
+    var(--corner-size) var(--corner-thickness);
+  background-repeat: no-repeat;
 }
