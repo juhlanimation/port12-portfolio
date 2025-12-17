@@ -1,8 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { inter, plusJakarta } from "./fonts";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { brand, contact, seo, assets } from "@/lib/config";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // Prevents layout shift when mobile URL bar shows/hides
+  interactiveWidget: "resizes-visual",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(brand.url),
