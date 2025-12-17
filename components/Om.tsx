@@ -128,16 +128,16 @@ export function Om() {
 
         {/* Image 4 - bottom left */}
         <div
-          className="absolute w-[26vw] h-[18vw] origin-top-left"
-          style={{ top: '54vw', left: '16vw' }}
+          className="absolute w-[28vw] h-[20vw] origin-top-left"
+          style={{ top: '52vw', left: '14vw' }}
         >
           <div className="relative w-full h-full">
             <Image
               src="/images/4.webp"
               alt="Port12"
               fill
-              className="object-cover"
-              sizes="26vw"
+              className="object-contain object-left"
+              sizes="28vw"
             />
           </div>
         </div>
