@@ -8,7 +8,6 @@ import { Om } from "@/components/Om";
 import { Medlemmer } from "@/components/Medlemmer";
 import { Medlemskab } from "@/components/Medlemskab";
 import { Footer } from "@/components/Footer";
-import { useSnapScroll } from "@/hooks/useSnapScroll";
 import { useLenis } from "@/components/SmoothScroll";
 
 export default function Home() {
@@ -27,9 +26,6 @@ export default function Home() {
     setIntroComplete(true);
   }, []);
 
-  // Snap scroll only on Hero and Medlemmer sections
-  useSnapScroll({ threshold: 0.2, delay: 500, duration: 1.2, sectionSelector: ".snap-section" });
-
   return (
     <main>
       <Logo revealProgress={coverProgress} />
@@ -38,8 +34,8 @@ export default function Home() {
       {/* HERO Section */}
       <Hero onCoverProgress={setCoverProgress} onIntroComplete={handleIntroComplete} />
 
-      {/* Sections wrapper */}
-      <div className="relative z-10">
+      {/* Sections wrapper - bg covers the fixed hero video */}
+      <div className="relative z-10 bg-background">
 
         {/* OM Section */}
         <Om />

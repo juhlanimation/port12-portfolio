@@ -10,7 +10,7 @@ interface HeroProps {
 
 const FRAME_RATE = 25;
 const LOOP_START_FRAME = 85;
-const TEXT_APPEAR_FRAME = 78;
+const TEXT_APPEAR_FRAME = 80;
 const LOOP_START_TIME = LOOP_START_FRAME / FRAME_RATE;
 const TEXT_APPEAR_TIME = TEXT_APPEAR_FRAME / FRAME_RATE;
 
@@ -20,30 +20,45 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   const textContainerRef = useRef<HTMLDivElement>(null);
   const [showText, setShowText] = useState(false);
 
-  // Video frame logic
+  // Video frame logic with precise RAF-based timing
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Handle time updates to detect when we reach the text appear frame
-    const handleTimeUpdate = () => {
+    let rafId: number;
+
+    // Use requestAnimationFrame for precise frame-level timing
+    const checkVideoTime = () => {
       if (!showText && video.currentTime >= TEXT_APPEAR_TIME) {
         setShowText(true);
+        return; // Stop checking once text is shown
       }
+      rafId = requestAnimationFrame(checkVideoTime);
     };
 
     // When video ends, loop back to frame 85
     const handleEnded = () => {
       video.currentTime = LOOP_START_TIME;
-      video.play();
+      video.play().catch(() => {});
     };
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
+    // Start RAF loop when video can play
+    const startChecking = () => {
+      rafId = requestAnimationFrame(checkVideoTime);
+    };
+
     video.addEventListener("ended", handleEnded);
+    video.addEventListener("canplay", startChecking);
+
+    // Start immediately if video is already ready
+    if (video.readyState >= 3) {
+      startChecking();
+    }
 
     return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
+      cancelAnimationFrame(rafId);
       video.removeEventListener("ended", handleEnded);
+      video.removeEventListener("canplay", startChecking);
     };
   }, [showText]);
 
@@ -101,11 +116,11 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   }, [calculateCoverProgress]);
 
   return (
-    <section className="section snap-section relative">
-      {/* Fixed Video Background - z-0 so sections slide over it */}
+    <section className="section relative overflow-hidden">
+      {/* Video Background - fixed on all devices for cover effect */}
       <video
         ref={videoRef}
-        className="fixed inset-0 z-0 w-full h-full object-cover"
+        className="fixed inset-0 z-0 w-full h-full object-cover object-center"
         autoPlay
         muted
         playsInline
@@ -115,7 +130,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
         <source src="/video/showreel.mp4" type="video/mp4" />
       </video>
 
-      {/* Fixed Content - stays centered, slides under next section */}
+      {/* Content - fixed on all devices for cover effect */}
       <div
         ref={textContainerRef}
         className="fixed inset-0 z-0 flex flex-col items-center justify-center pointer-events-none mix-blend-difference"
@@ -147,7 +162,17 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
       {/* Scroll indicator at bottom - only shows after intro */}
       {showText && (
         <div className="fixed bottom-8 left-0 right-0 z-0 flex justify-center pointer-events-none mix-blend-difference">
-          <span className="font-title text-sm uppercase tracking-widest text-white">
+          {/* Arrow for touch devices */}
+          <svg
+            className="w-6 h-6 text-white hidden touch:block"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+          {/* Text for non-touch devices */}
+          <span className="font-title text-sm uppercase tracking-widest text-white block touch:hidden">
             (SCROLL)
           </span>
         </div>

@@ -2,9 +2,66 @@ import Image from "next/image";
 
 export function Om() {
   return (
-    <section id="om" className="section bg-background relative overflow-hidden">
-      {/* Grid container with same left margin as Medlemmer */}
-      <div className="h-full px-6 sm:px-12 md:px-24 lg:px-32 xl:px-48 py-24">
+    <section id="om" className="bg-background relative overflow-hidden">
+      {/* Mobile Layout - vertical flexbox */}
+      <div className="md:hidden min-h-screen px-6 pt-24 pb-12 flex flex-col gap-12">
+        {/* Text block - centered, full width */}
+        <div className="flex justify-center">
+          <div className="w-full">
+            <div className="corner-border p-4">
+              <p className="font-body text-sm leading-relaxed text-foreground text-justify">
+                Port12 er et kontorfællesskab, men vi er sgu mere fællesskab end
+                vi er kontor. Godt nok sidder vi meget på vores flade og tapper i
+                tastaturerne, men vi går mere op i at spille hinanden gode ved at
+                dele: viden, erfaring, opgaver og inspiration. Det er dén energi,
+                du locker ind på hos Port12.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Image 1 - right aligned */}
+        <div className="flex justify-end">
+          <div className="w-[65%] aspect-[3/4] relative">
+            <Image
+              src="/images/844A8660.webp"
+              alt="Port12 medlemmer"
+              fill
+              className="object-cover"
+              sizes="65vw"
+            />
+          </div>
+        </div>
+
+        {/* Image 2 - left aligned */}
+        <div className="flex justify-start">
+          <div className="w-[70%] aspect-[3/2] relative">
+            <Image
+              src="/images/844A8495.webp"
+              alt="Port12 arbejdsplads"
+              fill
+              className="object-cover"
+              sizes="70vw"
+            />
+          </div>
+        </div>
+
+        {/* Image 3 - right aligned */}
+        <div className="flex justify-end">
+          <div className="w-[60%] aspect-[3/4] relative">
+            <Image
+              src="/images/1G4A5929.webp"
+              alt="Port12 medlem"
+              fill
+              className="object-cover"
+              sizes="60vw"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Layout - horizontal scrolling grid */}
+      <div className="hidden md:block h-screen px-6 sm:px-12 md:px-24 lg:px-32 xl:px-48 py-24">
         <div className="grid grid-cols-[repeat(6,minmax(400px,1fr))] grid-rows-2 gap-x-48 gap-y-32 h-full">
 
           {/* Cell 1 - Text block, right aligned */}

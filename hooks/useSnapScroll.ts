@@ -77,6 +77,10 @@ export function useSnapScroll({
   }, [findClosestSection, duration]);
 
   useEffect(() => {
+    // Disable snap scroll on touch devices
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouch) return;
+
     const handleScroll = () => {
       // Clear any existing timeout
       if (timeoutRef.current) {

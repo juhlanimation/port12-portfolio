@@ -5,9 +5,19 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="section-footer bg-foreground relative">
-      <div className="h-full flex items-start pt-6 px-12 sm:px-20 md:px-32 lg:px-48">
-        {/* Left - Navigation Links */}
-        <div className="flex-1 flex flex-col gap-0.5">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-0 py-6 px-8 sm:px-20 md:px-32 lg:px-48">
+        {/* Logo and Copyright - First on mobile, center on desktop */}
+        <div className="order-1 md:order-2 flex-1 flex flex-col items-center justify-center gap-2">
+          <span className="font-title font-bold text-4xl md:text-5xl uppercase tracking-wider text-white">
+            PORT12
+          </span>
+          <p className="font-body text-[10px] text-white tracking-wide">
+            Copyright © All rights reserved.
+          </p>
+        </div>
+
+        {/* Navigation Links - Second on mobile, left on desktop */}
+        <div className="order-2 md:order-1 flex-1 flex flex-col items-center md:items-start gap-0.5">
           <Link
             href="#om"
             className="font-body text-xs uppercase tracking-widest text-white hover:opacity-70 transition-opacity"
@@ -16,7 +26,7 @@ export function Footer() {
           </Link>
           <Link
             href="#medlemmer"
-            className="font-body text-xs uppercase tracking-widest text-white font-bold hover:opacity-70 transition-opacity"
+            className="font-body text-xs uppercase tracking-widest text-white hover:opacity-70 transition-opacity"
           >
             MEDLEMMER
           </Link>
@@ -28,18 +38,8 @@ export function Footer() {
           </Link>
         </div>
 
-        {/* Center - Logo and Copyright */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-2">
-          <span className="font-title font-bold text-4xl md:text-5xl uppercase tracking-wider text-white">
-            PORT12
-          </span>
-          <p className="font-body text-[10px] text-white tracking-wide">
-            Copyright © All rights reserved.
-          </p>
-        </div>
-
-        {/* Right - Contact Info */}
-        <div className="flex-1 flex flex-col items-end gap-0.5">
+        {/* Contact Info - Third on mobile, right on desktop */}
+        <div className="order-3 flex-1 flex flex-col items-center md:items-end gap-0.5">
           <a
             href="mailto:info@port12.dk"
             className="font-body text-xs text-white hover:opacity-70 transition-opacity"

@@ -1,126 +1,127 @@
-import Image from "next/image";
 
-// Dotted square with optional checkmark inside
-function CheckBox({ checked }: { checked: boolean }) {
+// Clean minimal checkmark
+function Check() {
   return (
-    <div className="relative inline-flex items-center justify-center w-5 h-5 dotted-box">
-      {checked && (
-        <Image
-          src="/images/checkmark.webp"
-          alt=""
-          width={16}
-          height={23}
-          className="object-contain absolute -top-2 left-0.5"
-        />
-      )}
-    </div>
+    <svg
+      className="w-3.5 h-3.5 shrink-0"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 8.5L6.5 12L13 4" />
+    </svg>
   );
 }
 
-// Dash/line for unavailable features
-function DashMark() {
+// Clean minimal dash
+function Dash() {
   return (
-    <div className="inline-flex items-center justify-center w-5 h-5">
-      <Image
-        src="/images/dash.webp"
-        alt=""
-        width={8}
-        height={2}
-        className="object-contain"
-      />
+    <svg
+      className="w-3.5 h-3.5 shrink-0"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    >
+      <path d="M4 8H12" />
+    </svg>
+  );
+}
+
+interface PlanCardProps {
+  name: string;
+  price: string;
+  description: string;
+  features: { name: string; value: boolean | string }[];
+}
+
+function PlanCard({ name, price, description, features }: PlanCardProps) {
+  return (
+    <div className="flex flex-col p-6">
+      {/* Title & Price */}
+      <h3 className="font-title text-4xl font-black tracking-tight">{name}</h3>
+      <p className="font-body text-lg font-semibold mt-1">{price}</p>
+      <p className="font-body text-[10px] uppercase tracking-wider opacity-60">ex moms / måned</p>
+
+      {/* Description */}
+      <p className="font-body text-xs leading-relaxed mt-3 mb-4 opacity-80">
+        {description}
+      </p>
+
+      {/* Divider */}
+      <div className="w-full h-px bg-foreground/20 mb-4" />
+
+      {/* Features list */}
+      <ul className="space-y-2">
+        {features.map((feature, i) => (
+          <li key={i} className="flex items-center gap-2">
+            {feature.value === false ? (
+              <Dash />
+            ) : (
+              <Check />
+            )}
+            <span className="font-body text-[11px] uppercase tracking-wide leading-tight">
+              {feature.name}
+              {typeof feature.value === "string" && (
+                <span className="opacity-60 normal-case block text-[10px]">{feature.value}</span>
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export function Medlemskab() {
-  const features = [
-    { name: "PRIS PR. MÅNED", flex: "1.300 DKK, ex moms", allIn: "2.000 DKK, ex moms" },
-    { name: "FRI ADGANG 24/7", flex: true, allIn: true },
-    { name: "EGEN NØGLE", flex: true, allIn: true },
-    { name: "WI-FI (1000 MBIT)", flex: true, allIn: true },
-    { name: "KØKKEN & TOILET", flex: true, allIn: true },
-    { name: "PRINTER & SCANNER", flex: true, allIn: true },
-    { name: "BORD & STOL", flex: true, allIn: true },
-    { name: "MØDELOKALE", flex: "ANDEN PRIORITET", allIn: "FØRSTE PRIORITET" },
-    { name: "EKSTERN SKÆRM", flex: "HVIS LEDIG", allIn: true },
-    { name: "EGEN FAST PLADS", flex: "dash", allIn: true },
-    { name: "REOL PLADS", flex: "dash", allIn: true },
+  const flexFeatures = [
+    { name: "Fri adgang 24/7", value: true },
+    { name: "Egen nøgle", value: true },
+    { name: "Wi-Fi (1000 Mbit)", value: true },
+    { name: "Køkken & toilet", value: true },
+    { name: "Printer & scanner", value: true },
+    { name: "Bord & stol", value: true },
+    { name: "Mødelokale", value: "Anden prioritet" },
+    { name: "Ekstern skærm", value: "Hvis ledig" },
+    { name: "Egen fast plads", value: false },
+    { name: "Reol plads", value: false },
   ];
 
-  const renderCell = (value: boolean | string) => {
-    if (value === "dash") return <DashMark />;
-    if (typeof value === "string") return value;
-    return <CheckBox checked={value} />;
-  };
+  const allInFeatures = [
+    { name: "Fri adgang 24/7", value: true },
+    { name: "Egen nøgle", value: true },
+    { name: "Wi-Fi (1000 Mbit)", value: true },
+    { name: "Køkken & toilet", value: true },
+    { name: "Printer & scanner", value: true },
+    { name: "Bord & stol", value: true },
+    { name: "Mødelokale", value: "Første prioritet" },
+    { name: "Ekstern skærm", value: true },
+    { name: "Egen fast plads", value: true },
+    { name: "Reol plads", value: true },
+  ];
 
   return (
-    <section id="medlemskab" className="section bg-background text-foreground relative">
-      <div className="h-full flex flex-col justify-start px-12 sm:px-20 md:px-32 lg:px-48 pt-12 pb-8">
+    <section id="medlemskab" className="section h-auto! md:h-screen! bg-background text-foreground">
+      <div className="h-full flex flex-col items-center justify-center px-6 py-16 md:py-0 sm:px-12 md:px-20">
 
-        {/* Top section - Three columns to align with table */}
-        <div className="w-full mb-8">
-          <div className="grid grid-cols-3 gap-8">
-
-            {/* Empty first column to match table layout */}
-            <div />
-
-            {/* FLEX Column */}
-            <div className="flex flex-col items-center text-center">
-              {/* Illustration placeholder */}
-              <div className="w-120 h-90 mb-0 relative">
-                <Image
-                  src="/images/flex-illustration.webp"
-                  alt="FLEX membership"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="font-title text-7xl font-black tracking-tight mb-3 w-full max-w-xs">FLEX</h3>
-              <p className="font-body text-sm leading-relaxed max-w-xs text-justify">
-                Frihed og fleksibilitet - betal kun for adgang ikke for plads (men husk lige at rydde op når du daffer hjem.)
-              </p>
-            </div>
-
-            {/* ALL-IN Column */}
-            <div className="flex flex-col items-center text-center">
-              {/* Illustration placeholder */}
-              <div className="w-120 h-90 mb-0 relative">
-                <Image
-                  src="/images/allin-illustration.webp"
-                  alt="ALL-IN membership"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="font-title text-7xl font-black tracking-tight mb-3 w-full max-w-xs">ALL-IN</h3>
-              <p className="font-body text-sm leading-relaxed max-w-xs text-justify">
-                Find dig til rette i dit second home! Fast base og arbejdsplads uden bøvl og krav til at cleane bordet
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Bottom section - Table */}
-        <div className="w-full">
-          <table className="w-full font-body uppercase tracking-wider">
-            <tbody>
-              {features.map((feature, index) => {
-                const isPrice = index === 0;
-                return (
-                  <tr key={index} className="border-b border-white">
-                    <td className="text-left py-3 w-1/3 text-[10px]">{feature.name}</td>
-                    <td className={`text-center py-3 w-1/3 ${isPrice ? "text-sm font-bold" : "text-xs"}`}>
-                      {renderCell(feature.flex)}
-                    </td>
-                    <td className={`text-center py-3 w-1/3 ${isPrice ? "text-sm font-bold" : "text-xs"}`}>
-                      {renderCell(feature.allIn)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        {/* Cards container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 w-full max-w-3xl">
+          <PlanCard
+            name="FLEX"
+            price="1.300 DKK"
+            description="Frihed og fleksibilitet - betal kun for adgang, ikke for plads."
+            features={flexFeatures}
+          />
+          <PlanCard
+            name="ALL-IN"
+            price="2.000 DKK"
+            description="Dit second home - fast plads uden krav om at rydde op."
+            features={allInFeatures}
+          />
         </div>
 
       </div>

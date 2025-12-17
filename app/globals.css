@@ -17,6 +17,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 /* Font utilities */
@@ -36,7 +37,7 @@ body {
 }
 
 .section-footer {
-  height: 10vh;
+  min-height: 10vh;
   width: 100%;
   position: relative;
 }
@@ -47,6 +48,7 @@ html {
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--foreground) var(--background);
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar (webkit) */
@@ -139,3 +141,6 @@ html {
     var(--corner-size) var(--corner-thickness);
   background-repeat: no-repeat;
 }
+
+/* Touch device variant - uses pointer: coarse to detect touch screens */
+@custom-variant touch (@media (pointer: coarse));

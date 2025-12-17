@@ -8,7 +8,7 @@ export function Navbar({ visible = true }: NavbarProps) {
   if (!visible) return null;
 
   return (
-    <nav className="fixed top-0 right-0 z-50 px-8 pt-5 mix-blend-difference">
+    <nav className="fixed top-0 right-0 z-50 px-8 pt-5 mix-blend-difference hidden md:block touch:hidden!">
       <div
         className="flex items-center gap-12 font-title text-sm uppercase tracking-widest text-white"
       >
