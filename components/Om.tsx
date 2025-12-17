@@ -80,8 +80,8 @@ export function Om() {
 
         {/* Image 1 - portrait, top right */}
         <div
-          className="absolute w-[28vw] h-[20vw] origin-top-left"
-          style={{ top: '6vw', left: '58vw' }}
+          className="absolute w-[32vw] h-[23vw] origin-top-left"
+          style={{ top: '6vw', left: '56vw' }}
         >
           <div className="relative w-full h-full">
             <Image
@@ -97,7 +97,7 @@ export function Om() {
         {/* Image 2 - people at gate, below paragraph left */}
         <div
           className="absolute w-[26vw] h-[17vw] origin-top-left"
-          style={{ top: '26vw', left: '8vw' }}
+          style={{ top: '30vw', left: '8vw' }}
         >
           <div className="relative w-full h-full">
             <Image
@@ -129,7 +129,7 @@ export function Om() {
         {/* Image 4 - bottom left */}
         <div
           className="absolute w-[22vw] h-[14vw] origin-top-left"
-          style={{ top: '52vw', left: '16vw' }}
+          style={{ top: '56vw', left: '16vw' }}
         >
           <div className="relative w-full h-full">
             <Image
