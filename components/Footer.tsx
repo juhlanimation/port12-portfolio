@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { brand, contact, navLinks } from "@/lib/config";
 
 export function Footer() {
   return (
@@ -9,7 +10,7 @@ export function Footer() {
         {/* Logo and Copyright - First on mobile, center on desktop */}
         <div className="order-1 md:order-2 flex-1 flex flex-col items-center justify-center gap-2">
           <span className="font-title font-bold text-4xl md:text-5xl uppercase tracking-wider text-white">
-            PORT12
+            {brand.name}
           </span>
           <p className="font-body text-[10px] text-white tracking-wide">
             Copyright © All rights reserved.
@@ -18,42 +19,29 @@ export function Footer() {
 
         {/* Navigation Links - Second on mobile, left on desktop */}
         <div className="order-2 md:order-1 flex-1 flex flex-col items-center md:items-start gap-0.5">
-          <Link
-            href="#om"
-            className="font-body text-xs uppercase tracking-widest text-white hover:opacity-70 transition-opacity"
-          >
-            OM PORT12
-          </Link>
-          <Link
-            href="#medlemmer"
-            className="font-body text-xs uppercase tracking-widest text-white hover:opacity-70 transition-opacity"
-          >
-            MEDLEMMER
-          </Link>
-          <Link
-            href="#medlemskab"
-            className="font-body text-xs uppercase tracking-widest text-white hover:opacity-70 transition-opacity"
-          >
-            MEDLEMSKAB
-          </Link>
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="footer-link">
+              {link.fullLabel}
+            </Link>
+          ))}
         </div>
 
         {/* Contact Info - Third on mobile, right on desktop */}
         <div className="order-3 flex-1 flex flex-col items-center md:items-end gap-0.5">
           <a
-            href="mailto:info@port12.dk"
+            href={`mailto:${contact.email}`}
             className="font-body text-xs text-white hover:opacity-70 transition-opacity"
           >
-            Mail: info@port12.dk
+            Mail: {contact.email}
           </a>
           <a
-            href="tel:+4531378089"
+            href={`tel:${contact.phone}`}
             className="font-body text-xs text-white hover:opacity-70 transition-opacity"
           >
-            Tlf. 31378089
+            Tlf. {contact.phoneDisplay}
           </a>
           <span className="font-body text-xs text-white">
-            Kløftehøj 3 / 8680 Ry
+            {contact.address.full}
           </span>
         </div>
       </div>

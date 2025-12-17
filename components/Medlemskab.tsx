@@ -1,3 +1,4 @@
+import { plans, getFeaturesForPlan, contact, siteContent, assets } from "@/lib/config";
 
 // Clean minimal checkmark
 function Check() {
@@ -16,8 +17,23 @@ function Check() {
   );
 }
 
-// Clean minimal dash
-function Dash() {
+// Division sign (÷)
+function Division() {
+  return (
+    <svg
+      className="w-3.5 h-3.5 shrink-0"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+    >
+      <circle cx="8" cy="4" r="1.5" />
+      <rect x="3" y="7" width="10" height="2" rx="1" />
+      <circle cx="8" cy="12" r="1.5" />
+    </svg>
+  );
+}
+
+// Plus sign
+function Plus() {
   return (
     <svg
       className="w-3.5 h-3.5 shrink-0"
@@ -27,101 +43,110 @@ function Dash() {
       strokeWidth="2"
       strokeLinecap="round"
     >
-      <path d="M4 8H12" />
+      <path d="M8 3V13M3 8H13" />
     </svg>
   );
+}
+
+// Feature icon component - Single Responsibility
+function FeatureIcon({ type, value }: { type?: "plus"; value: boolean }) {
+  if (type === "plus") return <Plus />;
+  if (!value) return <Division />;
+  return <Check />;
 }
 
 interface PlanCardProps {
   name: string;
   price: string;
   description: string;
-  features: { name: string; value: boolean | string }[];
+  features: { name: string; value: boolean; type?: "plus" }[];
+  illustration: string;
 }
 
-function PlanCard({ name, price, description, features }: PlanCardProps) {
+function PlanCard({ name, price, description, features, illustration }: PlanCardProps) {
   return (
-    <div className="flex flex-col p-6">
+    <div className="flex flex-col items-center text-center py-6 md:p-6">
+      {/* Illustration */}
+      <img
+        src={illustration}
+        alt={`${name} illustration`}
+        className="w-24 h-24 object-contain mb-4"
+      />
       {/* Title & Price */}
       <h3 className="font-title text-4xl font-black tracking-tight">{name}</h3>
       <p className="font-body text-lg font-semibold mt-1">{price}</p>
       <p className="font-body text-[10px] uppercase tracking-wider opacity-60">ex moms / måned</p>
 
       {/* Description */}
-      <p className="font-body text-xs leading-relaxed mt-3 mb-4 opacity-80">
+      <p className="font-body text-xs leading-relaxed mt-3 mb-4 opacity-80 whitespace-pre-line">
         {description}
       </p>
 
       {/* Divider */}
-      <div className="w-full h-px bg-foreground/20 mb-4" />
+      <div className="w-32 md:w-full h-px bg-foreground/20 mb-4" />
 
-      {/* Features list */}
-      <ul className="space-y-2">
-        {features.map((feature, i) => (
-          <li key={i} className="flex items-center gap-2">
-            {feature.value === false ? (
-              <Dash />
-            ) : (
-              <Check />
-            )}
-            <span className="font-body text-[11px] uppercase tracking-wide leading-tight">
-              {feature.name}
-              {typeof feature.value === "string" && (
-                <span className="opacity-60 normal-case block text-[10px]">{feature.value}</span>
-              )}
-            </span>
-          </li>
-        ))}
-      </ul>
+      {/* Features list - centered container, left-aligned content */}
+      <div className="flex justify-center w-full">
+        <ul className="space-y-2 text-left">
+          {features.map((feature, i) => (
+            <li key={i} className="flex items-center gap-2">
+              <FeatureIcon type={feature.type} value={feature.value} />
+              <span className="font-body text-[11px] uppercase tracking-wide leading-tight">
+                {feature.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
 
 export function Medlemskab() {
-  const flexFeatures = [
-    { name: "Fri adgang 24/7", value: true },
-    { name: "Egen nøgle", value: true },
-    { name: "Wi-Fi (1000 Mbit)", value: true },
-    { name: "Køkken & toilet", value: true },
-    { name: "Printer & scanner", value: true },
-    { name: "Bord & stol", value: true },
-    { name: "Mødelokale", value: "Anden prioritet" },
-    { name: "Ekstern skærm", value: "Hvis ledig" },
-    { name: "Egen fast plads", value: false },
-    { name: "Reol plads", value: false },
-  ];
-
-  const allInFeatures = [
-    { name: "Fri adgang 24/7", value: true },
-    { name: "Egen nøgle", value: true },
-    { name: "Wi-Fi (1000 Mbit)", value: true },
-    { name: "Køkken & toilet", value: true },
-    { name: "Printer & scanner", value: true },
-    { name: "Bord & stol", value: true },
-    { name: "Mødelokale", value: "Første prioritet" },
-    { name: "Ekstern skærm", value: true },
-    { name: "Egen fast plads", value: true },
-    { name: "Reol plads", value: true },
-  ];
-
   return (
-    <section id="medlemskab" className="section h-auto! md:h-screen! bg-background text-foreground">
-      <div className="h-full flex flex-col items-center justify-center px-6 py-16 md:py-0 sm:px-12 md:px-20">
+    <section id="medlemskab" className="section h-auto! bg-background text-foreground">
+      <div className="flex flex-col items-center justify-center px-6 pb-16 sm:px-12 md:px-20">
 
         {/* Cards container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 w-full max-w-3xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 w-full max-w-xl">
           <PlanCard
-            name="FLEX"
-            price="1.300 DKK"
-            description="Frihed og fleksibilitet - betal kun for adgang, ikke for plads."
-            features={flexFeatures}
+            name={plans.flex.name}
+            price={plans.flex.price}
+            description={plans.flex.description}
+            features={getFeaturesForPlan("flex")}
+            illustration={plans.flex.illustration}
           />
           <PlanCard
-            name="ALL-IN"
-            price="2.000 DKK"
-            description="Dit second home - fast plads uden krav om at rydde op."
-            features={allInFeatures}
+            name={plans.allIn.name}
+            price={plans.allIn.price}
+            description={plans.allIn.description}
+            features={getFeaturesForPlan("allIn")}
+            illustration={plans.allIn.illustration}
           />
+        </div>
+
+        {/* Contact section */}
+        <div className="mt-14 md:mt-24 flex flex-col items-center text-center max-w-sm">
+          <img
+            src={assets.images.kontaktIllustration}
+            alt="Kontakt illustration"
+            className="w-28 h-28 object-contain mb-6"
+          />
+          <h3 className="font-title text-3xl font-black tracking-tight">{siteContent.contactCta.title}</h3>
+          <p className="font-body text-sm leading-relaxed opacity-80">
+            {siteContent.contactCta.lines.map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < siteContent.contactCta.lines.length - 1 && <br />}
+              </span>
+            ))}
+          </p>
+          <a
+            href={`mailto:${contact.email}`}
+            className="nav-link font-body text-sm mt-6"
+          >
+            {contact.email}
+          </a>
         </div>
 
       </div>

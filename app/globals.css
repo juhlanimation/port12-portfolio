@@ -16,7 +16,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   overscroll-behavior-y: none;
 }
 
@@ -31,7 +31,6 @@ body {
 
 /* Section styling */
 .section {
-  height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -48,7 +47,7 @@ html {
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: var(--foreground) var(--background);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Custom scrollbar (webkit) */
@@ -89,7 +88,8 @@ html {
   bottom: -4px;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 1px;
+  opacity: 0.6;
   background: repeating-linear-gradient(
     to right,
     currentColor 0,
@@ -144,3 +144,51 @@ html {
 
 /* Touch device variant - uses pointer: coarse to detect touch screens */
 @custom-variant touch (@media (pointer: coarse));
+
+/* Reusable container with responsive padding (DRY) */
+.container-padding {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-padding {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-padding {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+}
+
+/* Footer link styling */
+.footer-link {
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: white;
+  transition: opacity 0.15s;
+}
+
+.footer-link:hover {
+  opacity: 0.7;
+}

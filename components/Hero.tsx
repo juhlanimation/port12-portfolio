@@ -2,21 +2,31 @@
 
 import { useRef, useEffect, useState, useCallback } from "react";
 import { gsap } from "gsap";
+import { brand, heroAnimation, assets } from "@/lib/config";
 
 interface HeroProps {
   onCoverProgress?: (progress: number) => void;
   onIntroComplete?: () => void;
 }
 
-const FRAME_RATE = 25;
-const LOOP_START_FRAME = 85;
-const TEXT_APPEAR_FRAME = 80;
-const LOOP_START_TIME = LOOP_START_FRAME / FRAME_RATE;
-const TEXT_APPEAR_TIME = TEXT_APPEAR_FRAME / FRAME_RATE;
+// Get stable viewport height using CSS svh (small viewport height)
+// This doesn't change when mobile URL bar shows/hides
+function getStableViewportHeight(): number {
+  if (typeof document === "undefined") return 0;
+  const el = document.createElement("div");
+  el.style.height = "100svh";
+  el.style.position = "absolute";
+  el.style.top = "-9999px";
+  document.body.appendChild(el);
+  const height = el.offsetHeight;
+  document.body.removeChild(el);
+  return height;
+}
 
 export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const viewportHeightRef = useRef<number>(0);
   const textContainerRef = useRef<HTMLDivElement>(null);
   const [showText, setShowText] = useState(false);
 
@@ -29,16 +39,16 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
 
     // Use requestAnimationFrame for precise frame-level timing
     const checkVideoTime = () => {
-      if (!showText && video.currentTime >= TEXT_APPEAR_TIME) {
+      if (!showText && video.currentTime >= heroAnimation.textAppearTime) {
         setShowText(true);
         return; // Stop checking once text is shown
       }
       rafId = requestAnimationFrame(checkVideoTime);
     };
 
-    // When video ends, loop back to frame 85
+    // When video ends, loop back to configured frame
     const handleEnded = () => {
-      video.currentTime = LOOP_START_TIME;
+      video.currentTime = heroAnimation.loopStartTime;
       video.play().catch(() => {});
     };
 
@@ -75,7 +85,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
     if (!titleRef.current) return;
 
     const titleRect = titleRef.current.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+    const viewportHeight = viewportHeightRef.current || window.innerHeight;
     const sectionWrapperTop = viewportHeight - window.scrollY;
     const titleTop = titleRect.top;
     const titleBottom = titleRect.bottom;
@@ -105,18 +115,26 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   }, [onCoverProgress]);
 
   useEffect(() => {
+    // Cache stable viewport height
+    viewportHeightRef.current = getStableViewportHeight();
+
+    const handleResize = () => {
+      viewportHeightRef.current = getStableViewportHeight();
+      calculateCoverProgress();
+    };
+
     calculateCoverProgress();
     gsap.ticker.add(calculateCoverProgress);
-    window.addEventListener("resize", calculateCoverProgress, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       gsap.ticker.remove(calculateCoverProgress);
-      window.removeEventListener("resize", calculateCoverProgress);
+      window.removeEventListener("resize", handleResize);
     };
   }, [calculateCoverProgress]);
 
   return (
-    <section className="section relative overflow-hidden">
+    <section className="section h-dvh relative overflow-hidden">
       {/* Video Background - fixed on all devices for cover effect */}
       <video
         ref={videoRef}
@@ -126,8 +144,8 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
         playsInline
         preload="auto"
       >
-        <source src="/video/showreel.webm" type="video/webm" />
-        <source src="/video/showreel.mp4" type="video/mp4" />
+        <source src={`${assets.video.showreel}.webm`} type="video/webm" />
+        <source src={`${assets.video.showreel}.mp4`} type="video/mp4" />
       </video>
 
       {/* Content - fixed on all devices for cover effect */}
@@ -136,7 +154,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
         className="fixed inset-0 z-0 flex flex-col items-center justify-center pointer-events-none mix-blend-difference"
         style={{ opacity: 0 }}
       >
-        {/* PORT12 Title */}
+        {/* Title */}
         <h1
           ref={titleRef}
           className="font-title font-bold uppercase text-center leading-none text-white"
@@ -145,17 +163,17 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
             width: "80%",
           }}
         >
-          PORT12
+          {brand.name}
         </h1>
 
-        {/* Subtitle */}
+        {/* Tagline */}
         <p
           className="font-title uppercase tracking-[0.3em] mt-4 text-center text-white"
           style={{
             fontSize: "clamp(0.75rem, 2vw, 1.5rem)",
           }}
         >
-          DRØM • DEL • SKAB
+          {brand.tagline}
         </p>
       </div>
 

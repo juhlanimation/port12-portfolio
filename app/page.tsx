@@ -28,14 +28,14 @@ export default function Home() {
 
   return (
     <main>
-      <Logo revealProgress={coverProgress} />
       <Navbar visible={introComplete} />
 
       {/* HERO Section */}
       <Hero onCoverProgress={setCoverProgress} onIntroComplete={handleIntroComplete} />
 
       {/* Sections wrapper - bg covers the fixed hero video */}
-      <div className="relative z-10 bg-background">
+      <div className="relative z-10 bg-background pt-5">
+        <Logo revealProgress={coverProgress} />
 
         {/* OM Section */}
         <Om />

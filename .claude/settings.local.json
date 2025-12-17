@@ -23,7 +23,9 @@
       "Bash(gh:*)",
       "Bash(npx vercel:*)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(find:*)",
+      "Bash(magick identify:*)"
     ]
   }
 }

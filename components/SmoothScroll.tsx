@@ -10,13 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 interface LenisContextType {
   start: () => void;
   stop: () => void;
-  isReady: boolean;
 }
 
 const LenisContext = createContext<LenisContextType>({
   start: () => {},
   stop: () => {},
-  isReady: false,
 });
 
 export function useLenis() {
@@ -71,7 +69,6 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
   const contextValue: LenisContextType = {
     start,
     stop,
-    isReady: lenis !== null,
   };
 
   return (
