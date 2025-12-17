@@ -36,7 +36,7 @@ body {
 }
 
 .section-footer {
-  min-height: 10vh;
+  min-height: 10svh;
   width: 100%;
   position: relative;
 }
