@@ -148,7 +148,7 @@ export function Medlemmer() {
                 className="container-padding"
               >
                 <h2
-                    className="font-title text-[12vw] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight leading-[0.9] md:leading-none md:whitespace-nowrap transition-opacity duration-300"
+                    className="font-title text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-7xl xl:text-8xl font-black uppercase tracking-tight leading-[0.9] lg:leading-none lg:whitespace-nowrap transition-opacity duration-300"
                     style={{
                       opacity: selectedIndex !== null && selectedIndex !== index ? 0.2 : 1,
                     }}
