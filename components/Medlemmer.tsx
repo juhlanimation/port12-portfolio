@@ -133,7 +133,7 @@ export function Medlemmer() {
           <p className="relative z-10 font-body text-base font-black tracking-widest mb-2 container-padding">
             Vi er
           </p>
-          <div className="flex flex-col gap-4 md:gap-0">
+          <div className="flex flex-col gap-4 lg:gap-0">
             {members.map((member, index) => (
               <div
                 key={member.name}
