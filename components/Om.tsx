@@ -71,7 +71,7 @@ export function Om() {
         {/* Text block - top left */}
         <div
           className="absolute w-[28vw] h-[16vw] origin-top-left"
-          style={{ top: '5vw', left: '16vw' }}
+          style={{ top: '5vw', left: '20vw' }}
         >
           <div className="w-full h-full flex items-center">
             <AboutTextBlock className="p-[1vw] text-[1.1vw]" />
@@ -128,16 +128,16 @@ export function Om() {
 
         {/* Image 4 - bottom left */}
         <div
-          className="absolute w-[22vw] h-[14vw] origin-top-left"
-          style={{ top: '56vw', left: '16vw' }}
+          className="absolute w-[26vw] h-[18vw] origin-top-left"
+          style={{ top: '54vw', left: '16vw' }}
         >
           <div className="relative w-full h-full">
             <Image
               src="/images/4.webp"
               alt="Port12"
               fill
-              className="object-contain object-left"
-              sizes="22vw"
+              className="object-cover"
+              sizes="26vw"
             />
           </div>
         </div>
