@@ -128,8 +128,8 @@ export function Om() {
 
         {/* Image 4 - bottom left */}
         <div
-          className="absolute w-[28vw] h-[20vw] origin-top-left"
-          style={{ top: '52vw', left: '14vw' }}
+          className="absolute w-[24vw] h-[18vw] origin-top-left"
+          style={{ top: '56vw', left: '14vw' }}
         >
           <div className="relative w-full h-full">
             <Image
@@ -137,7 +137,7 @@ export function Om() {
               alt="Port12"
               fill
               className="object-contain object-left"
-              sizes="28vw"
+              sizes="24vw"
             />
           </div>
         </div>
