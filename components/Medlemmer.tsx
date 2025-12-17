@@ -124,12 +124,12 @@ export function Medlemmer() {
       <section
         ref={sectionRef}
         id="medlemmer"
-        className="section h-svh relative overflow-hidden"
+        className="section min-h-svh relative overflow-hidden"
       >
         {/* Background layer */}
         <div className="absolute inset-0 bg-background" />
 
-        <div className="relative z-50 h-full flex flex-col justify-center py-16 md:py-0 mix-blend-difference text-white">
+        <div className="relative z-50 min-h-svh flex flex-col justify-center py-16 md:py-0 mix-blend-difference text-white">
           <p className="relative z-10 font-body text-base font-black tracking-widest mb-2 container-padding">
             Vi er
           </p>
