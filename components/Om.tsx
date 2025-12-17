@@ -5,7 +5,7 @@ import { siteContent, assets } from "@/lib/config";
 function AboutTextBlock({ className = "" }: { className?: string }) {
   return (
     <div className={`corner-border ${className}`}>
-      <p className="font-body leading-relaxed text-foreground text-justify whitespace-pre-line">
+      <p className="font-body leading-relaxed text-foreground text-justify">
         {siteContent.about}
       </p>
     </div>
