@@ -46,8 +46,8 @@ export function Om() {
       <div className="lg:hidden px-6 sm:px-12 md:px-20 py-16 md:py-24 flex flex-col gap-8 md:gap-24">
         {/* Text block - centered, constrained width */}
         <div className="flex justify-center mb-8 md:mb-12">
-          <div className="w-full max-w-sm md:max-w-md">
-            <AboutTextBlock className="p-4 text-sm" />
+          <div className="w-full max-w-md md:max-w-lg">
+            <AboutTextBlock className="p-4 text-base" />
           </div>
         </div>
 
@@ -70,11 +70,11 @@ export function Om() {
 
         {/* Text block - top left */}
         <div
-          className="absolute w-[24vw] h-[14vw] origin-top-left"
-          style={{ top: '5vw', left: '18vw' }}
+          className="absolute w-[28vw] h-[16vw] origin-top-left"
+          style={{ top: '5vw', left: '16vw' }}
         >
           <div className="w-full h-full flex items-center">
-            <AboutTextBlock className="p-[0.8vw] text-[0.9vw]" />
+            <AboutTextBlock className="p-[1vw] text-[1.1vw]" />
           </div>
         </div>
 
