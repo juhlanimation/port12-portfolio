@@ -25,7 +25,10 @@
       "Bash(git commit:*)",
       "Bash(git push)",
       "Bash(find:*)",
-      "Bash(magick identify:*)"
+      "Bash(magick identify:*)",
+      "Bash(git lfs:*)",
+      "Bash(powershell -Command \"Get-ChildItem ''public/images/*.webp'' | Select-Object Name, Length\")",
+      "Bash(git cat-file:*)"
     ]
   }
 }

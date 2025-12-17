@@ -85,7 +85,7 @@ export function Om() {
         >
           <div className="relative w-full h-full">
             <Image
-              src="/images/844A8660.webp"
+              src="/images/1.webp"
               alt="Port12 medlemmer"
               fill
               className="object-contain object-top"
@@ -101,7 +101,7 @@ export function Om() {
         >
           <div className="relative w-full h-full">
             <Image
-              src="/images/port12-fest.webp"
+              src="/images/2.webp"
               alt="Port12 fællesskab event"
               fill
               className="object-contain object-left"
