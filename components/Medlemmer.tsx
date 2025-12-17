@@ -124,7 +124,7 @@ export function Medlemmer() {
       <section
         ref={sectionRef}
         id="medlemmer"
-        className="section relative overflow-hidden my-32 md:my-48 lg:my-64"
+        className="section relative overflow-hidden my-16 md:my-24 lg:my-32"
       >
         {/* Background layer */}
         <div className="absolute inset-0 bg-background" />
