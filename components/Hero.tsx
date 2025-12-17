@@ -134,11 +134,11 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   }, [calculateCoverProgress]);
 
   return (
-    <section className="section h-dvh relative overflow-hidden">
+    <section className="section h-svh relative overflow-hidden">
       {/* Video Background - fixed on all devices for cover effect */}
       <video
         ref={videoRef}
-        className="fixed inset-0 z-0 w-full h-full object-cover object-center"
+        className="fixed inset-0 z-0 w-full h-svh object-cover object-center"
         autoPlay
         muted
         playsInline
@@ -151,7 +151,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
       {/* Content - fixed on all devices for cover effect */}
       <div
         ref={textContainerRef}
-        className="fixed inset-0 z-0 flex flex-col items-center justify-center pointer-events-none mix-blend-difference"
+        className="fixed inset-x-0 top-0 z-0 h-svh flex flex-col items-center justify-center pointer-events-none mix-blend-difference"
         style={{ opacity: 0 }}
       >
         {/* Title */}
