@@ -101,7 +101,7 @@ export function Medlemmer() {
     <>
       {/* Fullscreen video layer - fixed to viewport, behind everything */}
       <div
-        className="fixed inset-0 z-40 pointer-events-none transition-opacity duration-500"
+        className="fixed inset-x-0 top-0 z-40 h-svh pointer-events-none transition-opacity duration-500"
         style={{ opacity: activeVideoSrc ? 1 : 0 }}
       >
         {memberVideoSources.map((src) => (
@@ -111,7 +111,7 @@ export function Medlemmer() {
               if (el) videoRefs.current.set(src, el);
             }}
             src={src}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+            className="absolute inset-0 w-full h-svh object-cover transition-opacity duration-500"
             style={{ opacity: activeVideoSrc === src ? 1 : 0 }}
             muted
             loop
@@ -124,7 +124,7 @@ export function Medlemmer() {
       <section
         ref={sectionRef}
         id="medlemmer"
-        className="section h-dvh relative overflow-hidden"
+        className="section h-svh relative overflow-hidden"
       >
         {/* Background layer */}
         <div className="absolute inset-0 bg-background" />
