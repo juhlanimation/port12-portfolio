@@ -96,7 +96,7 @@ export function Om() {
 
         {/* Image 2 - people at gate, below paragraph left */}
         <div
-          className="absolute w-[26vw] h-[17vw] origin-top-left"
+          className="absolute w-[28vw] h-[18vw] origin-top-left"
           style={{ top: '30vw', left: '8vw' }}
         >
           <div className="relative w-full h-full">
