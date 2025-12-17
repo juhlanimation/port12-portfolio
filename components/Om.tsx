@@ -66,7 +66,7 @@ export function Om() {
 
       {/* Desktop Layout - scattered collage (lg+)
           All containers use vw units, content fits within */}
-      <div className="hidden lg:block relative overflow-hidden h-[68vw]">
+      <div className="hidden lg:block relative overflow-hidden h-[74vw]">
 
         {/* Text block - top left */}
         <div
@@ -129,7 +129,7 @@ export function Om() {
         {/* Image 4 - bottom left */}
         <div
           className="absolute w-[28vw] h-[20vw] origin-top-left"
-          style={{ top: '46vw', left: '14vw' }}
+          style={{ top: '52vw', left: '14vw' }}
         >
           <div className="relative w-full h-full">
             <Image
