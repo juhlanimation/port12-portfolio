@@ -113,7 +113,7 @@ export function Om() {
         {/* Image 3 - center-right */}
         <div
           className="absolute w-[26vw] h-[17vw] origin-top-left"
-          style={{ top: '38vw', left: '54vw' }}
+          style={{ top: '38vw', left: '52vw' }}
         >
           <div className="relative w-full h-full">
             <Image
