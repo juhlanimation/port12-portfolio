@@ -73,7 +73,7 @@ function PlanCard({ name, price, description, features, illustration }: PlanCard
         className="w-48 h-48 object-contain mb-4"
       />
       {/* Title & Price */}
-      <h3 className="font-heading text-5xl font-black tracking-tight">{name}</h3>
+      <h3 className="font-heading text-4xl font-black tracking-tight">{name}</h3>
       <p className="font-body text-lg font-semibold mt-1">{price}</p>
       <p className="font-body text-[10px] uppercase tracking-wider opacity-60">ex moms / måned</p>
 
@@ -132,7 +132,7 @@ export function Medlemskab() {
             alt="Kontakt illustration"
             className="w-36 h-36 object-contain mb-4"
           />
-          <h3 className="font-heading text-5xl font-black tracking-tight">{siteContent.contactCta.title}</h3>
+          <h3 className="font-heading text-3xl font-black tracking-tight">{siteContent.contactCta.title}</h3>
           <p className="font-body text-sm leading-relaxed opacity-80">
             {siteContent.contactCta.lines.map((line, i) => (
               <span key={i}>

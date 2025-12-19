@@ -160,7 +160,6 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
           className="font-title font-bold uppercase text-center leading-none tracking-wider text-white"
           style={{
             fontSize: "clamp(4rem, 20vw, 20rem)",
-            width: "80%",
           }}
         >
           {brand.name}
