@@ -52,11 +52,11 @@ export interface Member {
 
 export const members: Member[] = [
   { name: "Rune Svenningsen", videoSrc: "/video/RS_Port12_Showreel_2.webm", portfolioUrl: "https://runesvenningsen.dk" },
-  { name: "Maria Tranberg", portfolioUrl: "https://mariatranberg.com" },
+  { name: "Maria Tranberg", videoSrc: "/video/MARIAT.webm", portfolioUrl: "https://mariatranberg.com" },
   { name: "Nicolaj Larsson", videoSrc: "/video/NL_Port12_Showreel_v2.webm", portfolioUrl: "https://ccccccc.tv" },
-  { name: "Tor Birk Trads", videoSrc: "/video/TorBirkTrads.webm", portfolioUrl: "https://torbirktrads.dk" },
+  { name: "Tor Birk Trads", videoSrc: "/video/TorBirkTrads2.webm", portfolioUrl: "https://www.torbirktrads.dk" },
   { name: "Bo Juhl", videoSrc: "/video/BJ_Port12_Showreel_v1.webm", portfolioUrl: "https://bojuh.com" },
-  { name: "Maria Kjær" },
+  { name: "Maria Kjær", videoSrc: "/video/A_MARIAKJAER3.webm" },
 ];
 
 // Derived: unique video sources for preloading
@@ -89,13 +89,13 @@ export const plans = {
     name: "FLEX",
     price: "1.300 DKK",
     description: "Frihed og fleksibilitet.\nBetal kun for adgang, ikke for plads.",
-    illustration: "/images/flex-illustration.webp",
+    illustration: "/images/FLEX_Illustration_2.webp",
   },
   allIn: {
     name: "ALL-IN",
     price: "2.000 DKK",
     description: "Dit second home.\nFast plads uden krav om at rydde op.",
-    illustration: "/images/allin-illustration.webp",
+    illustration: "/images/ALL-IN_Illustration_3.webp",
   },
 } as const;
 
@@ -142,7 +142,7 @@ Det er dén energi, du tapper ind i hos Port12 i Ry. Kom forbi og smag kaffen!`,
   contactCta: {
     title: "KONTAKT OS",
     lines: [
-      "Hiv fatt hvis du har spørgsmål.",
+      "Hiv fat hvis du har spørgsmål.",
       "Eller kom og mød os.",
       "Vi bider ikke. Tværtimod.",
     ],
