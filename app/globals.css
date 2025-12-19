@@ -26,6 +26,10 @@ body {
   font-family: "BBH Sans Hegarty", system-ui, -apple-system, sans-serif;
 }
 
+.font-heading {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
 .font-body {
   font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
 }

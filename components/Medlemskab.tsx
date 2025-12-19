@@ -70,15 +70,15 @@ function PlanCard({ name, price, description, features, illustration }: PlanCard
       <img
         src={illustration}
         alt={`${name} illustration`}
-        className="w-40 h-40 object-contain mb-4"
+        className="w-48 h-48 object-contain mb-4"
       />
       {/* Title & Price */}
-      <h3 className="font-title text-4xl font-black tracking-tight">{name}</h3>
+      <h3 className="font-heading text-5xl font-black tracking-tight">{name}</h3>
       <p className="font-body text-lg font-semibold mt-1">{price}</p>
       <p className="font-body text-[10px] uppercase tracking-wider opacity-60">ex moms / måned</p>
 
       {/* Description */}
-      <p className="font-body text-xs leading-relaxed mt-3 mb-4 opacity-80 whitespace-pre-line">
+      <p className="font-body text-sm leading-relaxed mt-3 mb-4 opacity-80 whitespace-pre-line">
         {description}
       </p>
 
@@ -108,7 +108,7 @@ export function Medlemskab() {
       <div className="flex flex-col items-center justify-center px-6 pb-16 sm:px-12 md:px-20">
 
         {/* Cards container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 w-full max-w-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full max-w-2xl">
           <PlanCard
             name={plans.flex.name}
             price={plans.flex.price}
@@ -130,9 +130,9 @@ export function Medlemskab() {
           <img
             src={assets.images.kontaktIllustration}
             alt="Kontakt illustration"
-            className="w-28 h-28 object-contain mb-6"
+            className="w-36 h-36 object-contain mb-4"
           />
-          <h3 className="font-title text-3xl font-black tracking-tight">{siteContent.contactCta.title}</h3>
+          <h3 className="font-heading text-5xl font-black tracking-tight">{siteContent.contactCta.title}</h3>
           <p className="font-body text-sm leading-relaxed opacity-80">
             {siteContent.contactCta.lines.map((line, i) => (
               <span key={i}>

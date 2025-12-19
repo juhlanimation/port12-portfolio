@@ -28,7 +28,8 @@
       "Bash(magick identify:*)",
       "Bash(git lfs:*)",
       "Bash(powershell -Command \"Get-ChildItem ''public/images/*.webp'' | Select-Object Name, Length\")",
-      "Bash(git cat-file:*)"
+      "Bash(git cat-file:*)",
+      "Bash(powershell -Command \"Get-ChildItem ''d:\\\\Programming\\\\Portfolios\\\\port12-portfolio\\\\public\\\\video\\\\*.mp4'' | Select-Object Name\")"
     ]
   }
 }

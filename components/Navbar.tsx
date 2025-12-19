@@ -11,7 +11,7 @@ export function Navbar({ visible = true }: NavbarProps) {
 
   return (
     <nav className="fixed top-0 right-0 z-50 px-8 pt-5 mix-blend-difference hidden md:block touch:hidden!">
-      <div className="flex items-center gap-12 font-title text-sm uppercase tracking-widest text-white">
+      <div className="flex items-center gap-12 font-heading text-sm uppercase tracking-widest text-white">
         {navLinks.map((link) => (
           <a key={link.href} href={link.href} className="nav-link">
             {link.label}

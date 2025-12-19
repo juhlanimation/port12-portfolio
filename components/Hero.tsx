@@ -157,7 +157,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
         {/* Title */}
         <h1
           ref={titleRef}
-          className="font-title font-bold uppercase text-center leading-none text-white"
+          className="font-title font-bold uppercase text-center leading-none tracking-wider text-white"
           style={{
             fontSize: "clamp(4rem, 20vw, 20rem)",
             width: "80%",
@@ -168,7 +168,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
 
         {/* Tagline */}
         <p
-          className="font-title uppercase tracking-[0.3em] mt-4 text-center text-white"
+          className="font-heading uppercase tracking-[0.3em] mt-4 text-center text-white"
           style={{
             fontSize: "clamp(0.75rem, 2vw, 1.5rem)",
           }}
@@ -190,7 +190,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
           {/* Text for non-touch devices */}
-          <span className="font-title text-sm uppercase tracking-widest text-white block touch:hidden">
+          <span className="font-heading text-sm uppercase tracking-widest text-white block touch:hidden">
             (SCROLL)
           </span>
         </div>
