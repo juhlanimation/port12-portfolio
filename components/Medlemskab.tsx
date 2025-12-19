@@ -70,7 +70,7 @@ function PlanCard({ name, price, description, features, illustration }: PlanCard
       <img
         src={illustration}
         alt={`${name} illustration`}
-        className="w-24 h-24 object-contain mb-4"
+        className="w-40 h-40 object-contain mb-4"
       />
       {/* Title & Price */}
       <h3 className="font-title text-4xl font-black tracking-tight">{name}</h3>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/bbh-sans-hegarty/400.css";
 
 :root {
   --background: #d8d8d5;
@@ -9,7 +10,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-plus-jakarta);
-  --font-title: var(--font-inter);
+  --font-title: "BBH Sans Hegarty";
 }
 
 body {
@@ -22,7 +23,7 @@ body {
 
 /* Font utilities */
 .font-title {
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: "BBH Sans Hegarty", system-ui, -apple-system, sans-serif;
 }
 
 .font-body {
