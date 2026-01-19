@@ -57,7 +57,7 @@ export const members: Member[] = [
   { name: "Nicolaj Larsson", videoSrc: "/video/NL_Port12_Showreel_v2.webm", portfolioUrl: "https://ccccccc.tv" },
   { name: "Tor Birk Trads", videoSrc: "/video/TorBirkTrads2.webm", portfolioUrl: "https://www.torbirktrads.dk" },
   { name: "Bo Juhl", videoSrc: "/video/BJ_Port12_Showreel_v1.webm", portfolioUrl: "https://bojuh.com" },
-  { name: "Maria Kjær", videoSrc: "/video/StrejfStudio_Showreel_2025.webm", portfolioUrl: "https://strejfstudio.dk" },
+  { name: "Maria Kjær", videoSrc: "/video/StrejfStudio_Showreel_2025_v3.webm", portfolioUrl: "https://www.linkedin.com/in/maria-kjær-nørgaard/" },
 ];
 
 // Derived: unique video sources for preloading
