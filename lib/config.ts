@@ -1,7 +1,7 @@
 // =============================================================================
 // SITE CONFIGURATION
 // Centralized configuration for all site data following DRY principles
-// Last updated: 2025-12-25 - Maria Kjær portfolio link removed
+// Last updated: 2026-01-19 - Updated Maria Kjær with Strejf Studio video and portfolio
 // =============================================================================
 
 // -----------------------------------------------------------------------------
@@ -57,7 +57,7 @@ export const members: Member[] = [
   { name: "Nicolaj Larsson", videoSrc: "/video/NL_Port12_Showreel_v2.webm", portfolioUrl: "https://ccccccc.tv" },
   { name: "Tor Birk Trads", videoSrc: "/video/TorBirkTrads2.webm", portfolioUrl: "https://www.torbirktrads.dk" },
   { name: "Bo Juhl", videoSrc: "/video/BJ_Port12_Showreel_v1.webm", portfolioUrl: "https://bojuh.com" },
-  { name: "Maria Kjær" },
+  { name: "Maria Kjær", videoSrc: "/video/StrejfStudio_Showreel_2025.webm", portfolioUrl: "https://strejfstudio.dk" },
 ];
 
 // Derived: unique video sources for preloading
@@ -159,7 +159,7 @@ export const assets = {
   },
   images: {
     kontaktIllustration: "/images/kontakt-illustration.webp",
-    ogImage: "/og-image.jpg",
+    ogImage: "/og-image.webp",
     om: {
       mobile: [
         { src: "/images/1.webp", alt: "Port12", aspect: "3/4", width: "65%" },
