@@ -9,12 +9,12 @@ interface HeroProps {
   onIntroComplete?: () => void;
 }
 
-// Get dynamic viewport height using CSS dvh (dynamic viewport height)
-// This adjusts smoothly when mobile URL bar shows/hides
-function getDynamicViewportHeight(): number {
+// Get small viewport height using CSS svh (small viewport height)
+// This uses the smallest viewport (with URL bar visible), preventing scaling during scroll
+function getSmallViewportHeight(): number {
   if (typeof document === "undefined") return 0;
   const el = document.createElement("div");
-  el.style.height = "100dvh";
+  el.style.height = "100svh";
   el.style.position = "absolute";
   el.style.top = "-9999px";
   document.body.appendChild(el);
@@ -115,11 +115,11 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   }, [onCoverProgress]);
 
   useEffect(() => {
-    // Cache dynamic viewport height
-    viewportHeightRef.current = getDynamicViewportHeight();
+    // Cache small viewport height
+    viewportHeightRef.current = getSmallViewportHeight();
 
     const handleResize = () => {
-      viewportHeightRef.current = getDynamicViewportHeight();
+      viewportHeightRef.current = getSmallViewportHeight();
       calculateCoverProgress();
     };
 
@@ -134,11 +134,11 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
   }, [calculateCoverProgress]);
 
   return (
-    <section className="section h-dvh relative overflow-hidden">
+    <section className="section h-svh relative overflow-hidden">
       {/* Video Background - fixed on all devices for cover effect */}
       <video
         ref={videoRef}
-        className="fixed inset-0 z-0 w-full h-dvh object-cover object-center"
+        className="fixed inset-0 z-0 w-full h-svh object-cover object-center"
         autoPlay
         muted
         playsInline
@@ -151,7 +151,7 @@ export function Hero({ onCoverProgress, onIntroComplete }: HeroProps) {
       {/* Content - fixed on all devices for cover effect */}
       <div
         ref={textContainerRef}
-        className="fixed inset-x-0 top-0 z-0 h-dvh flex flex-col items-center justify-center pointer-events-none mix-blend-difference"
+        className="fixed inset-x-0 top-0 z-0 h-svh flex flex-col items-center justify-center pointer-events-none mix-blend-difference"
         style={{ opacity: 0 }}
       >
         {/* Title */}
