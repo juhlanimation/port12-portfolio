@@ -145,7 +145,13 @@ export function Medlemmer() {
                     setActiveVideoSrc(null);
                   }
                 }}
-                className="container-padding"
+                onClick={() => {
+                  // If this member is targeted and has a portfolio, open it
+                  if (selectedIndex === index && member.portfolioUrl) {
+                    window.open(member.portfolioUrl, "_blank", "noopener,noreferrer");
+                  }
+                }}
+                className={`container-padding ${selectedIndex === index && member.portfolioUrl ? "cursor-pointer" : ""}`}
               >
                 <h2
                     className="font-heading text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-7xl xl:text-8xl font-black uppercase tracking-tight leading-[0.9] lg:leading-none lg:whitespace-nowrap transition-opacity duration-300"
@@ -153,18 +159,7 @@ export function Medlemmer() {
                       opacity: selectedIndex !== null && selectedIndex !== index ? 0.2 : 1,
                     }}
                   >
-                    {member.portfolioUrl ? (
-                      <a
-                        href={member.portfolioUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="cursor-pointer hover:opacity-70 transition-opacity pointer-events-auto"
-                      >
-                        {member.name}
-                      </a>
-                    ) : (
-                      member.name
-                    )}
+                    {member.name}
                   </h2>
                 </div>
             ))}
